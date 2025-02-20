@@ -2,13 +2,12 @@ import prompt from "prompt-sync";
 import { AlunoView } from "./modulos/Aluno/views/index.js";
 import { TurmaView } from "./modulos/Turma/views/index.js";
 
-
 const turmaView = new TurmaView();
 const alunoView = new AlunoView();
 
 const input = prompt();
 
- export const menuPrincipal = () => {
+export const menuPrincipal = () => {
   console.log("\n######### MENU #############");
   console.log("1 - Menu de Alunos");
   console.log("2 - Menu de Turmas");
@@ -23,11 +22,12 @@ const input = prompt();
     case "2":
       menuTurma();
       break;
+    case "3":
 
     default:
       break;
   }
-}
+};
 
 function menuTurma() {
   console.log("\n######### MENU #############");
@@ -56,6 +56,9 @@ function menuTurma() {
     case "5":
       turmaView.editarTurma();
       break;
+    case "0":
+      menuPrincipal();
+      break;
     default:
       break;
   }
@@ -70,38 +73,30 @@ function menuAluno() {
   console.log("5 - Editar aluno");
   console.log("0 - Sair");
   console.log("##############################");
+
+  const opcao = input("Escolha uma opção: ");
+  switch (opcao) {
+    case "1":
+      alunoView.criarAluno();
+      break;
+    case "2":
+      alunoView.listarAlunos();
+      break;
+    case "3":
+      alunoView.excluirPorMatricula();
+      break;
+    case "4":
+      alunoView.excluirTodos();
+      break;
+    case "5":
+      alunoView.editarAluno();
+      break;
+    case "0":
+      menuPrincipal();
+      break;
+    default:
+      console.log("Opção invalida, digitte um numero do menu!");
+  }
 }
-
-function main() {
-  let controle;
-  do {
-    menuAluno();
-    controle = input("Escolha uma opção: ");
-    switch (controle) {
-      case "1":
-        alunoView.criarAluno();
-        break;
-      case "2":
-        alunoView.listarAlunos();
-        break;
-      case "3":
-        alunoView.excluirPorMatricula();
-        break;
-      case "4":
-        alunoView.excluirTodos();
-        break;
-      case "5":
-        alunoView.editarAluno();
-        break;
-      case "0":
-        console.log("Saindo...");
-        break;
-      default:
-        console.log("Opção invalida, digitte um numero do menu!");
-    }
-  } while (controle !== "0");
-}
-
-
 
 menuPrincipal();

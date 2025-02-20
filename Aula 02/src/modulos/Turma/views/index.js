@@ -9,13 +9,26 @@ export class TurmaView {
   listarTurmas() {
     console.log("\nLista de alunos:");
     turmaController.listarTodos();
+
+    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não`);
+    switch (opcao) {
+      case "1":
+        menuPrincipal();
+        break;
+      case "0":
+        break;
+      default:
+        break;
+    }
   }
+  
   criarTurma() {
     const cod = input("Digite o Codigo: ");
     const nome = input("Digite o nome: ");
     const sala = input("Digite a Sala: ");
     const capacidade = input("Digite a Capacidade: ");
     turmaController.criar(cod, nome, sala, capacidade);
+
     const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não`);
     switch (opcao) {
       case "1":
