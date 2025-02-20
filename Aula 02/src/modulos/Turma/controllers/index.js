@@ -1,12 +1,12 @@
-import { turmas } from "../../../config/database";
-import { TurmaModel } from "../models";
+import { turmas } from "../../../config/database.js";
+import { TurmaModel } from "../models/index.js";
 
 export class TurmaController {
   criar(cod, nome, sala, capacidade) {
     try {
       const novaTurma = new TurmaModel(cod, nome, sala, capacidade);
       turmas.push(novaTurma);
-      console.table(novoAluno);
+      console.table(novaTurma);
     } catch (error) {
       console.error("Erro ao tentar criar Turma", error.message);
     }

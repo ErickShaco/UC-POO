@@ -1,13 +1,14 @@
 import prompt from "prompt-sync";
-import { AlunoView } from "./modulos/Aluno/views";
-import { TurmaView } from "./modulos/Turma/views";
+import { AlunoView } from "./modulos/Aluno/views/index.js";
+import { TurmaView } from "./modulos/Turma/views/index.js";
+
 
 const turmaView = new TurmaView();
 const alunoView = new AlunoView();
 
 const input = prompt();
 
-function menuPrincipal() {
+ export const menuPrincipal = () => {
   console.log("\n######### MENU #############");
   console.log("1 - Menu de Alunos");
   console.log("2 - Menu de Turmas");
@@ -100,5 +101,7 @@ function main() {
     }
   } while (controle !== "0");
 }
+
+
 
 menuPrincipal();
