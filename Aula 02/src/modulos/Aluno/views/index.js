@@ -1,5 +1,5 @@
 import prompt from "prompt-sync";
-import { AlunoController } from "../controllers/index";
+import { AlunoController } from "../controllers";
 
 const alunoController = new AlunoController();
 const input = prompt();
@@ -7,7 +7,7 @@ const input = prompt();
 export class AlunoView {
   listarAlunos() {
     console.log("\nLista de alunos:");
-    alunoController.listarTodos()
+    alunoController.listarTodos();
   }
   criarAluno() {
     const matricula = input("Digite a matrícula: ");
@@ -28,10 +28,11 @@ export class AlunoView {
   }
   excluirPorMatricula() {
     const matriculaDeletar = input(
-      "Digite a matrícula do aluno a ser deletado: ");
+      "Digite a matrícula do aluno a ser deletado: "
+    );
     alunoController.deletarPorMatricula(matriculaDeletar);
   }
-  excluirTodos(){
-    alunoController.deletarTodos()
+  excluirTodos() {
+    alunoController.deletarTodos();
   }
 }

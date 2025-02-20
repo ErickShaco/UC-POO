@@ -1,16 +1,15 @@
 {
-  "name": "crud_poo",
+  "name": "aula-02",
   "version": "1.0.0",
+  "description": "**Data:** 6 de fevereiro de 2025  \r **Duração:** 2h 42m",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
-  "description": "",
   "dependencies": {
     "prompt-sync": "^4.2.0"
   }
