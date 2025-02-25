@@ -2,9 +2,9 @@ import { alunos } from "../../../config/database.js";
 import { AlunoModel } from "../models/index.js";
 
 export class AlunoController {
-  criar(matricula, nome, email, senha) {
+  criar(matricula, nome,telefone, email, senha) {
     try {
-      const novoAluno = new AlunoModel(matricula, nome, email, senha);
+      const novoAluno = new AlunoModel(matricula, nome, telefone, email, senha);
       alunos.push(novoAluno);
       console.table(novoAluno);
     } catch (error) {
@@ -12,13 +12,14 @@ export class AlunoController {
     }
   }
 
-  editar(matricula, novoNome, novoEmail, novaSenha) {
+  editar(matricula, novoNome, novoTelefone, novoEmail, novaSenha) {
     try {
       const aluno = alunos.find((aluno) => aluno.getMatricula === matricula);
       if (!aluno) {
         return console.log("Aluno não encontrado!");
       }
       aluno.nome = novoNome || aluno.nome;
+      aluno.telefone = novoTelefone || aluno.telefone
       aluno.email = novoEmail || aluno.email;
       aluno.senha = novaSenha || aluno.senha;
     } catch (error) {

@@ -1,11 +1,8 @@
-class Professores {
-    #matricula
-    constructor(matricula, turma, senha){
-        this.#matricula = matricula
+import { Pessoa } from "./Pessoa.js";
+
+export class ProfessoresModel extends Pessoa {
+    constructor(matricula, turma, nome, telefone, email, senha){
+      super(matricula, nome, telefone, email, senha)
         this.turma = turma
-        this.senha = senha
     }
-    get getMatricula() {
-        return this.#matricula;
-      }
     }
