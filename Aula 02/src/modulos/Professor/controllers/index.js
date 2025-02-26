@@ -2,10 +2,12 @@ import { ProfessoresModel } from "../models/index.js";
 import { Professores } from "../../../config/database.js";
 
 export class ProfessoresController {
-  criar(matricula, nome, email, telefone, senha) {
+  criar(matricula,turma, disciplina, nome, email, telefone, senha) {
     try {
       const novoProfessor = new ProfessoresModel(
         matricula,
+        turma,
+        disciplina,
         nome,
         email,
         telefone,

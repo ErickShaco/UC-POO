@@ -1,5 +1,5 @@
 import prompt from "prompt-sync";
-import { menuProfessor, menuPrincipal } from "../../../index.js";
+import { menuProfessor } from "../../../index.js";
 import { ProfessoresController } from "../controllers/index.js";
 
 
@@ -25,11 +25,13 @@ export class ProfessorView {
 
   criarProfessor() {
     const matricula = input("Digite a matrícula: ");
+    const turma = input("Digite a turma:")
+    const disciplina = input("Digite a Disciplina:")
     const nome = input("Digite o Nome: ");
     const telefone = input("Digite o Telefone");
     const email = input("Digite o Email: ");
     const senha = input("Digite a Senha: ");
-    professorController.criar(matricula, nome, telefone, email, senha);
+    professorController.criar(matricula,turma, disciplina, nome, telefone, email, senha);
 
     const opcao = input(`Deseja voltar ao menu? 1 = Sim 0 Não: `);
     switch (opcao) {

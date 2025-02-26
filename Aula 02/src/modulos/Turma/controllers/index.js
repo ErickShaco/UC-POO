@@ -1,8 +1,28 @@
-import { turmas } from "../../../config/database.js";
+import { alunos, Professores, turmas } from "../../../config/database.js";
 import { TurmaModel } from "../models/index.js";
+import { AlunoModel } from "../../Aluno/models/index.js";
+import { ProfessoresModel } from "../../Professor/models/index.js";
+import { AlunoView } from "../../Aluno/views/index.js";
+import { ProfessorView } from "../../Professor/views/index.js";
+
+const alunoView = new AlunoView()
+const professorView = new ProfessorView()
 
 export class TurmaController {
-  criar(cod, nome, sala, capacidade) {
+  criar(cod, nome, sala, capacidade, aluno, professor) {
+    
+    const aluno = alunos.find((aluno) => aluno.getMatricula === matricula);
+    if(!aluno || !aluno instanceof AlunoModel){
+      alunoView.criarAluno()
+      return console.log("ALuno Invalido ou Não encontrado")
+    }
+
+    const professor = Professores.find((professor) => professor.getMatricula === matricula);
+    if(!professor || !professor instanceof ProfessoresModel){
+      professorView.criarProfessor()
+     return console.log("Professor Invalido ou Não encontrado")
+    }
+
     try {
       const novaTurma = new TurmaModel(cod, nome, sala, capacidade);
       turmas.push(novaTurma);
@@ -69,6 +89,22 @@ deletarPorCod(cod) {
       } catch (error) {
         console.error("Erro ao tentar exibir as Turmas", error.message);
       }
+    }
+    adcionarAluno(){
+       
+    }
+
+    adcionarProfessor(){
+
+
+    }
+
+    mudarProfessor(){
+
+    }
+
+    mudarAluno(){
+
     }
 
 }
