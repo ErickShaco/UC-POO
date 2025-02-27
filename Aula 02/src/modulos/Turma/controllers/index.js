@@ -11,20 +11,20 @@ const professorView = new ProfessorView()
 export class TurmaController {
   criar(cod, nome, sala, capacidade, aluno, professor) {
     
-    const aluno = alunos.find((aluno) => aluno.getMatricula === matricula);
-    if(!aluno || !aluno instanceof AlunoModel){
+    const a1 = alunos.find((aluno) => aluno.getMatricula === matricula);
+    if(!a1 || !a1 instanceof AlunoModel){
       alunoView.criarAluno()
       return console.log("ALuno Invalido ou Não encontrado")
     }
 
-    const professor = Professores.find((professor) => professor.getMatricula === matricula);
-    if(!professor || !professor instanceof ProfessoresModel){
+    const p1 = Professores.find((professor) => professor.getMatricula === matricula);
+    if(!p1 || !p1 instanceof ProfessoresModel){
       professorView.criarProfessor()
      return console.log("Professor Invalido ou Não encontrado")
     }
 
     try {
-      const novaTurma = new TurmaModel(cod, nome, sala, capacidade);
+      const novaTurma = new TurmaModel(cod, nome, sala, capacidade, aluno, professor);
       turmas.push(novaTurma);
       console.table(novaTurma);
     } catch (error) {
