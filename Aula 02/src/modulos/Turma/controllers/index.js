@@ -5,26 +5,34 @@ import { ProfessoresModel } from "../../Professor/models/index.js";
 import { AlunoView } from "../../Aluno/views/index.js";
 import { ProfessorView } from "../../Professor/views/index.js";
 
-const alunoView = new AlunoView()
-const professorView = new ProfessorView()
+const alunoView = new AlunoView();
+const professorView = new ProfessorView();
 
 export class TurmaController {
   criar(cod, nome, sala, capacidade, aluno, professor) {
-    
     const a1 = alunos.find((aluno) => aluno.getMatricula === matricula);
-    if(!a1 || !a1 instanceof AlunoModel){
-      alunoView.criarAluno()
-      return console.log("ALuno Invalido ou Não encontrado")
+    if (!a1 || !a1 instanceof AlunoModel) {
+      alunoView.criarAluno();
+      return console.log("ALuno Invalido ou Não encontrado");
     }
 
-    const p1 = Professores.find((professor) => professor.getMatricula === matricula);
-    if(!p1 || !p1 instanceof ProfessoresModel){
-      professorView.criarProfessor()
-     return console.log("Professor Invalido ou Não encontrado")
+    const p1 = Professores.find(
+      (professor) => professor.getMatricula === matricula
+    );
+    if (!p1 || !p1 instanceof ProfessoresModel) {
+      professorView.criarProfessor();
+      return console.log("Professor Invalido ou Não encontrado");
     }
 
     try {
-      const novaTurma = new TurmaModel(cod, nome, sala, capacidade, aluno, professor);
+      const novaTurma = new TurmaModel(
+        cod,
+        nome,
+        sala,
+        capacidade,
+        aluno,
+        professor
+      );
       turmas.push(novaTurma);
       console.table(novaTurma);
     } catch (error) {
@@ -32,7 +40,7 @@ export class TurmaController {
     }
   }
 
-  editar(cod, novoNome, novaSala, novaCapacidade) {
+  editar(cod, novoNome, novaSala, novaCapacidade, novoAluno, novoProfessor) {
     try {
       const turma = turmas.find((turma) => turmas.getcod === cod);
       if (!turma) {
@@ -41,12 +49,14 @@ export class TurmaController {
       turma.nome = novoNome || turma.nome;
       turma.sala = novaSala || turma.sala;
       turma.capacidade = novaCapacidade || turma.capacidade;
+      turma.aluno = novoAluno || turma.aluno;
+      turma.professor = novoProfessor || turma.professor;
     } catch (error) {
       console.error("Erro ao tentar atualizar a Sala", error.message);
     }
   }
 
-deletarPorCod(cod) {
+  deletarPorCod(cod) {
     try {
       const index = turmas.findIndex((turma) => turma.getcod === cod);
       if (index === -1) {
@@ -59,7 +69,7 @@ deletarPorCod(cod) {
     }
   }
 
-    deletarTodos() {
+  deletarTodos() {
     try {
       turmas.length = 0;
       console.log("Todos as turmas excluidas!");
@@ -69,43 +79,32 @@ deletarPorCod(cod) {
   }
 
   listaPorCod(cod) {
-      try {
-        const turma = turmas.find((turma) => turma.getcod === cod);
-        if (!turma) {
-          return console.log("Turma não encontrado");
-        }
-        console.table(turma);
-      } catch (error) {
-        console.error("Erro ao tentar exibir a Turma", error.message);
+    try {
+      const turma = turmas.find((turma) => turma.getcod === cod);
+      if (!turma) {
+        return console.log("Turma não encontrado");
       }
+      console.table(turma);
+    } catch (error) {
+      console.error("Erro ao tentar exibir a Turma", error.message);
     }
-    
-    listarTodos() {
-      try {
-        if (turmas.length === 0) {
-          return console.log("Não existe Turmas a serem exibidos!");
-        }
-        console.table(turmas);
-      } catch (error) {
-        console.error("Erro ao tentar exibir as Turmas", error.message);
+  }
+
+  listarTodos() {
+    try {
+      if (turmas.length === 0) {
+        return console.log("Não existe Turmas a serem exibidos!");
       }
+      console.table(turmas);
+    } catch (error) {
+      console.error("Erro ao tentar exibir as Turmas", error.message);
     }
-    adcionarAluno(){
-       
-    }
+  }
+  adcionarAluno() {}
 
-    adcionarProfessor(){
+  adcionarProfessor() {}
 
+  mudarProfessor() {}
 
-    }
-
-    mudarProfessor(){
-
-    }
-
-    mudarAluno(){
-
-    }
-
+  mudarAluno() {}
 }
-
