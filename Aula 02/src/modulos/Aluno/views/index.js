@@ -11,7 +11,7 @@ export class AlunoView {
     console.log("\nLista de alunos:");
     alunoController.listarTodos();
 
-    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não: `);
+    const opcao = input(`Deseja voltar ao menu? 1 = Sim 0 Não: `);
     switch (opcao) {
       case "1":
         menuAluno();
@@ -31,10 +31,10 @@ export class AlunoView {
     const senha = input("Digite a Senha: ");
     alunoController.criar(matricula, nome, telefone, email, senha);
 
-    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não: `);
+    const opcao = input(`Deseja voltar ao menu ? 1 = Sim 0 Não: `);
     switch (opcao) {
       case "1":
-        menuPrincipal();
+        menuAluno();
         break;
       case "0":
         break;
@@ -56,10 +56,10 @@ export class AlunoView {
 
     alunoController.editar(matriculaEditar, novoNome,novoTelefone, novoEmail, novaSenha);
 
-    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não: `);
+    const opcao = input(`Deseja voltar ao menu ? 1 = Sim 0 Não: `);
     switch (opcao) {
       case "1":
-        menuPrincipal();
+        menuAluno();
         break;
       case "0":
         break;
@@ -74,10 +74,10 @@ export class AlunoView {
     );
     alunoController.deletarPorMatricula(matriculaDeletar);
 
-    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não: `);
+    const opcao = input(`Deseja voltar ao menu? 1 = Sim 0 Não: `);
     switch (opcao) {
       case "1":
-        menuPrincipal();
+        menuAluno();
         break;
       case "0":
         break;
@@ -88,10 +88,10 @@ export class AlunoView {
   excluirTodos() {
     alunoController.deletarTodos();
 
-    const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não: `);
+    const opcao = input(`Deseja voltar ao menu? 1 = Sim 0 Não: `);
     switch (opcao) {
       case "1":
-        menuPrincipal();
+        menuAluno();
         break;
       case "0":
         break;

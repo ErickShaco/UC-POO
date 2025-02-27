@@ -27,7 +27,9 @@ export class TurmaView {
     const nome = input("Digite o nome: ");
     const sala = input("Digite a Sala: ");
     const capacidade = input("Digite a Capacidade: ");
-    turmaController.criar(cod, nome, sala, capacidade);
+    const matriculaAluno = input("Digite a Matricula do Aluno: ")
+    const matriculaProfessor = input("Digite a Matricula do Professor: ")
+    turmaController.criar(cod, nome, sala, capacidade, matriculaAluno, matriculaProfessor);
 
     const opcao = input(`Deseja voltar ao menu principal? 1 = Sim 0 Não`);
     switch (opcao) {

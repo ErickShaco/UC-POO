@@ -5,23 +5,24 @@ import { ProfessoresModel } from "../../Professor/models/index.js";
 import { AlunoView } from "../../Aluno/views/index.js";
 import { ProfessorView } from "../../Professor/views/index.js";
 
-const alunoView = new AlunoView();
-const professorView = new ProfessorView();
 
 export class TurmaController {
-  criar(cod, nome, sala, capacidade, aluno, professor) {
-    const a1 = alunos.find((aluno) => aluno.getMatricula === matricula);
-    if (!a1 || !a1 instanceof AlunoModel) {
-      alunoView.criarAluno();
-      return console.log("ALuno Invalido ou Não encontrado");
+  criar(cod, nome, sala, capacidade, matriculaAluno = [], matriculaProfessor = []) {
+  
+    const alunoVerificar = matriculaAluno.every((matricula) =>{
+      const aluno = alunos.find((a1) => {a1.matricula === matricula})
+      return aluno && aluno instanceof AlunoModel
+    })
+    if (!alunoVerificar && alunoVerificar instanceof AlunoModel) {
+      return console.log("ALuno Invalido!");
     }
 
-    const p1 = Professores.find(
-      (professor) => professor.getMatricula === matricula
-    );
-    if (!p1 || !p1 instanceof ProfessoresModel) {
-      professorView.criarProfessor();
-      return console.log("Professor Invalido ou Não encontrado");
+    const professorVerificar = matriculaProfessor.every((matricula)=>{
+      const professor = Professores.find((p1) => {p1.matricula === matricula})
+      return professor && professor instanceof ProfessoresModel
+    })
+    if (!professorVerificar && !professorVerificar instanceof ProfessoresModel) {
+      return console.log("Professor Invalido!");
     }
 
     try {
@@ -30,8 +31,8 @@ export class TurmaController {
         nome,
         sala,
         capacidade,
-        aluno,
-        professor
+        matriculaAluno,
+        matriculaProfessor
       );
       turmas.push(novaTurma);
       console.table(novaTurma);
